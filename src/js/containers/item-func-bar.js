@@ -24,20 +24,24 @@ class ItemFuncBar extends Component {
 
     render() {
         return(
-            <div>
-                <span>{this.props.itemList.length} items left</span>
-                <ul className="nav nav-pills">
-                    <li className={this.state.filterType === "All" ? "active" : ""}>
-                        <a href="#" onClick={() => this.handleOnClickItemFilter("All")}>All</a>
-                    </li>
-                    <li className={this.state.filterType === "Active" ? "active" : ""}>
-                        <a href="#" onClick={() => this.handleOnClickItemFilter("Active")}>Active</a>
-                    </li>
-                    <li className={this.state.filterType === "Completed" ? "active" : ""}>
-                        <a href="#" onClick={() => this.handleOnClickItemFilter("Completed")}>Completed</a>
-                    </li>
-                </ul>
-            </div>
+            <table className="item-box-table">
+                <tbody>
+                <tr><td width="30%"><span className="item-count">{this.props.itemList.length} item{ this.props.itemList.length < 2 ? "" : "s"} left</span>
+                </td><td width="70%">
+                    <ul className="nav nav-pills">
+                        <li className={this.state.filterType === "All" ? "active" : ""}>
+                            <a href="#" onClick={() => this.handleOnClickItemFilter("All")}>All</a>
+                        </li>
+                        <li className={this.state.filterType === "Active" ? "active" : ""}>
+                            <a href="#" onClick={() => this.handleOnClickItemFilter("Active")}>Active</a>
+                        </li>
+                        <li className={this.state.filterType === "Completed" ? "active" : ""}>
+                            <a href="#" onClick={() => this.handleOnClickItemFilter("Completed")}>Completed</a>
+                        </li>
+                    </ul>
+                </td></tr>
+                </tbody>
+            </table>
         );
     }
 }

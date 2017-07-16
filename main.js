@@ -1,7 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const {ipcMain} = require('electron');
 
-
 // shared to-do list data
 global.sharedData = {
     itemList: [
@@ -26,18 +25,18 @@ global.sharedData = {
 
 // electron main process
 app.on('ready', () => {
-    const numOfWindows = 2; // number of windows, can grow dynamically
+    const numOfWindows = 3; // number of windows, can grow dynamically
     var windows = [];
 
     for(var i = 0; i < numOfWindows; i++){
         const win = new BrowserWindow({
             width:  800,
-            height: 1000,
+            height: 600,
             show: true,
         });
 
         win.loadURL(`file://${__dirname}/dist/index.html`);
-        win.openDevTools();
+        // win.openDevTools();
         windows.push(win);
     }
 

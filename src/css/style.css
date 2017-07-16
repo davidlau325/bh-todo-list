@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+body{
+    background-color: #f4f3f2;
+}
+
+#top-bar-logo {
+    border-bottom: 1px solid #7d7d7d;
+    border-right: 1px solid #7d7d7d;
+    padding: 12px;
+    height: 50px;
+    vertical-align: middle;
+    background-color: #ffffff;
+}
+
+#top-bar-app {
+    border-bottom: 1px solid #7d7d7d;
+    padding: 10px;
+    background-color: #aea198;
+    font-size: 20px;
+    color: #ffffff;
+    height: 50px;
+    vertical-align: middle;
+}
+
+#item-new-entry-input {
+    font-size: 20px;
+    width: 100%;
+    border: 0px;
+}
+
+.item-box {
+    display: flex;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.item-box-table {
+    width:100%;
+    word-wrap: break-word;
+}
+
+.item-checkbox {
+    width: 30px;
+    height: 30px;
+    background: #ddd;
+    border-radius: 100%;
+    margin: 5px 10px;
+    position: relative;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.item-checkbox label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+
+    transition: all .5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+
+    background: #333;
+    box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.item-checkbox input[type=checkbox]:checked + label {
+    background: #26ca28;
+}
+
+.item-count {
+    color: #7d7d7d;
+}

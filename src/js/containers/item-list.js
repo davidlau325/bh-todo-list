@@ -34,9 +34,23 @@ class ItemList extends Component {
         }
         return this.props.itemList.map((item) => {
             return(
-                <li className="list-group-item" key={item.id}>
-                    <input type="checkbox" checked={item.isCompleted} onChange={() => this.handleMarkItemCompleted(item)}/> {item.text}
-                    <button type="button" className="close" onClick={() => this.handleDeleteItem(item)}><span aria-hidden="true">&times;</span></button>
+                <li className="list-group-item item-box" key={item.id}>
+                    <table className="item-box-table">
+                        <tbody>
+                        <tr><td width="15%">
+                        <div className="item-checkbox">
+                            <input type="checkbox" id={"itemCheckbox" + item.id} checked={item.isCompleted} onChange={() => this.handleMarkItemCompleted(item)}/>
+                            <label htmlFor={"itemCheckbox" + item.id} />
+                            </div>
+                        </td>
+                        <td width="75%">{item.text}</td>
+                        <td width="10%">
+                            <button type="button" className="close pull-right" onClick={() => this.handleDeleteItem(item)}>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </td></tr>
+                        </tbody>
+                    </table>
                 </li>
             )
         });

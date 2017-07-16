@@ -34,11 +34,20 @@ class ItemNewEntry extends Component {
 
     render() {
         return(
-            <div>
-                <span>+</span>
-                <input type="text" placeholder="What needs to be done?" onKeyPress={this.handleInputKeyPress}
-                       ref={(input) => {this.itemInput = input;}} />
-            </div>
+            <ul className="list-group">
+                <li className="list-group-item">
+                <table className="item-box-table">
+                    <tbody>
+                    <tr><td>
+                        <span className="glyphicon glyphicon-chevron-down" />
+                    </td><td>
+                    <input id="item-new-entry-input" type="text" placeholder="What needs to be done?" onKeyPress={this.handleInputKeyPress}
+                        ref={(input) => {this.itemInput = input;}} />
+                    </td></tr>
+                    </tbody>
+                </table>
+                </li>
+            </ul>
         );
     }
 }
