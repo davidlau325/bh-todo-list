@@ -3,7 +3,7 @@
 A multi-window To-do list app built with Electron, React and Redux
 
 ## Getting Started
-###Prerequisties
+### Prerequisties
 ```
 node > v5.0 
 npm > v3.3.0
