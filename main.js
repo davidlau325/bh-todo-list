@@ -1,39 +1,49 @@
 const { app, BrowserWindow } = require('electron');
 const {ipcMain} = require('electron');
 
-global.listData = {
-    list:[
+
+// shared to-do list data
+global.sharedData = {
+    itemList: [
         {
-            id:100,value:25
+            id: 0,
+            text: "First meet up with David Lau on 5th July",
+            isCompleted: true
+        },
+        {
+            id: 1,
+            text: "David Bewick meet with David Lau on Monday",
+            isCompleted: true
+        },
+        {
+            id: 2,
+            text: "David Lau to speak with Kaspar on Wednesday",
+            isCompleted: false
         }
-    ]
+    ],
+    itemLatestID: 2
 };
 
+// electron main process
 app.on('ready', () => {
+    const numOfWindows = 2; // number of windows, can grow dynamically
+    var windows = [];
 
+    for(var i = 0; i < numOfWindows; i++){
+        const win = new BrowserWindow({
+            width:  800,
+            height: 1000,
+            show: true,
+        });
 
-    const win = new BrowserWindow({
-        width: 1200,
-        height: 690,
-        show: false,
+        win.loadURL(`file://${__dirname}/dist/index.html`);
+        win.openDevTools();
+        windows.push(win);
+    }
+
+    ipcMain.on('item-list-update', () => {
+        windows.forEach((win) => {
+            win.webContents.send('refresh-item-data');
+        });
     });
-win.loadURL(`file://${__dirname}/dist/index.html`);
-win.openDevTools();
-win.show();
-
-const win2 = new BrowserWindow({
-    width: 1200,
-    height: 690,
-    show: false,
-});
-win2.loadURL(`file://${__dirname}/dist/index.html`);
-win2.openDevTools();
-win2.show();
-
-ipcMain.on('data-update', (event, arg) => {
-    console.log('main process get ipc');
-console.log('send to all renderer');
-win.webContents.send('refresh-render');
-win2.webContents.send('refresh-render');
-});
 });
